@@ -23,6 +23,8 @@ readtsv(url)
 
 So I needed to install the readr package to use it. 
 
+## Tranformation the data
+
 Now that I could knit it, I went to work on my transformation, which I decided the simplist route would be to find the average of some of the FPKM columns in the data.
 
 So I assigned a expression variable called expr and assigned the columns to that variable. Then I took a function to take the average of the numbers in those columns and call it avg.expr.
