@@ -23,7 +23,7 @@ readtsv(url)
 
 So I needed to install the readr package to use it. 
 
-## Tranformation the data
+## Tranforming the data
 
 Now that I could knit it, I went to work on my transformation, which I decided the simplist route would be to find the average of some of the FPKM columns in the data.
 
