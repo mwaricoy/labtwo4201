@@ -1,0 +1,44 @@
+---
+title: "pubh4201labtwo"
+author: "martha w"
+date: "2026-09-14"
+output: html_document
+---
+
+## Airway smooth muscle RNA sequence
+
+```{r setup}
+library(dplyr)
+library(readr)
+url <- "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE52778&format=file&file=GSE52778_All_Sample_FPKM_Matrix.txt.gz"
+fpkm <- read_table(url)
+dim(fpkm)
+colnames(fpkm)[1:20]
+```
+
+### Making a non trivial transformation of RNA data
+
+```{r take avaerage}
+expr <- fpkm %>%
+  select(contains("FPKM"))
+
+expr <- expr %>%
+  mutate(across(everything(), as.numeric))
+
+avg_expr <- rowMeans(expr, na.rm = TRUE)
+
+head(avg_expr)
+
+
+```
+
+## Make a visulaization 
+
+```{r histogram}
+hist(avg_expr,
+     main = "Average Gene Expression",
+     xlab = "Average FPKM")
+```
+
+## Summary of Results
+#The histogram here illustrates that based on the RNA sequence data, most of these gene expressions have a low average FPKM. This makes sense because not every RNA sequence is going to be expressed, and there must be a selection of certain genes to translate to proteins.  
